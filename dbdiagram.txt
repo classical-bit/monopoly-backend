@@ -1,0 +1,17 @@
+enum user_roles {
+  player
+  banker
+}
+
+Table users as U {
+  id uuid
+  full_name varchar
+  created_at timestamp
+  role user_roles[]
+}
+
+Table accounts as a {
+  id uuid
+  balance bigint
+  user_id uuid [ref: - users.id]
+}
